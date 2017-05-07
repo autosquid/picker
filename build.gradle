@@ -1,0 +1,11 @@
+def abspath = new File(".").absolutePath
+
+task Gen(type: Copy){
+    from  'src/pypongee'
+    include 'detectmlsdlines.sh.in'
+    rename ('detectmlsdlines.sh.in', 'detectmlsdlines.sh')
+    into 'src/pypongee'
+    expand ([
+            projroot: abspath
+    ])
+}

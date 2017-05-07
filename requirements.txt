@@ -1,0 +1,4 @@
+git+https://github.com/autosquid/pvtrace.git
+git+https://github.com/autosquid/hammer.git
+numpy
+scipy

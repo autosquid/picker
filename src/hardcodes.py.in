@@ -1,0 +1,17 @@
+# -*- coding: utf-8 -*-
+# Author: MightU < justin.seeley.cn$gmail.com>
+"""all dirty hardcodes"""
+
+import os
+
+class Hardcodes(object):
+    def __init__(self, args):
+        "docstring"
+        pass
+    projroot = "$projroot"
+    datadir = os.path.join(projroot, "data")
+    testdataroot = os.path.expanduser(datadir)
+    ucalibdataroot = os.path.join(datadir, "Lobo")
+    dockerdatavolumn_local = os.path.join(datadir, "mlsddata")
+    dockerdatavolumn = "/data"
+    dockeroutput_subdir = "output"
