@@ -9,6 +9,11 @@
 1. Qt5 python binding
 1. Gradle
 
+
+- Tips:
+1. use ```homebrew``` to install them.
+2. use ```virtualenv``` if necessary
+
 ### Python Packages
 
 All Required packages are listed in "requirements.txt".
