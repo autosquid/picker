@@ -26,6 +26,7 @@ All Required packages are listed in "requirements.txt".
 under project root:
 
 1. ```gradle gen```
+2. under src, run ```./genui.sh``` to generate .py from .ui (Qt Gui file)
 
 # IO
 
