@@ -30,3 +30,6 @@ under project root:
 # IO
 
 see ```doc/lpicker.md```
+
+# TODO
+1. use docker to automate dev. setting up and deployment
