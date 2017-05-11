@@ -7,7 +7,8 @@
 1. Python
 1. OpenCV with Python2 binding
 1. Qt5 python binding
-1. Gradle
+4. Gradle
+
 
 
 - Tips:

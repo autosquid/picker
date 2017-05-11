@@ -90,3 +90,6 @@ ENV/
 
 # generated python file
 src/hardcodes.py
+.idea/
+.DS_Store
+.gradle/
