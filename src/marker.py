@@ -5,6 +5,9 @@ from PyQt5.QtCore import *
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 import os
+import numpy as np
+
+nmarkers_per = 6
 
 
 class ImageMarker(QMainWindow):
@@ -28,12 +31,12 @@ class ImageMarker(QMainWindow):
         self.imageList = imageList
         self.recordDict.clear()
         for image in imageList:
-            self.recordDict[image] = [None, None, None]
+            self.recordDict[image] = [None,] * nmarkers_per
 
     def mouseReleaseEvent(self, event):
         print event.pos()
         self.recordDict[self.imageList[self.crtImageId]][self.crtMarkerCnt] = event.pos()
-        self.crtMarkerCnt = self.crtMarkerCnt + 1 if self.crtMarkerCnt < 2 else 0
+        self.crtMarkerCnt = self.crtMarkerCnt + 1 if self.crtMarkerCnt < nmarkers_per-1 else 0
         if self.crtMarkerCnt == 0:
             if self.crtImageId != len(self.imageList)-1:
                 self.crtImageId += 1
@@ -51,18 +54,13 @@ class ImageMarker(QMainWindow):
             self.crtMarkerCnt = 0
 
     def saveRecord(self):
-        recordPath = os.getcwd()+"\\triplets.txt"
+        path = os.path.normpath(self.imageList[0])
+        recordPath = os.path.join(os.getcwd(), "{}-triplets.txt".format(path.split(os.sep)[-4]))
         recordFile = open(recordPath, 'w')
         for imageFilePath, markers in self.recordDict.iteritems():
             try:
-                recordFile.write("{0} {1} {2} {3} {4} {5} {6}\n".format(
-                    imageFilePath,
-                    markers[0].x(),
-                    markers[0].y(),
-                    markers[1].x(),
-                    markers[1].y(),
-                    markers[2].x(),
-                    markers[2].y()))
+                ps = reduce(lambda L, m: L + [m.x(), m.y()], markers, [imageFilePath, ])
+                recordFile.write(' '.join(map(str, ps)) + '\n')
             except:
                 recordFile.write("{0} not marked successfully.\n".format(imageFilePath))
                 continue
