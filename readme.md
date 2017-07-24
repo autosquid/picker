@@ -34,4 +34,4 @@ under project root:
 see ```doc/lpicker.md```
 
 # TODO
-1. use docker to automate dev. setting up and deployment
+1. use docker to automate dev. setting up and deployment.
